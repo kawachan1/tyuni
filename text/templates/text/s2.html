@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+
+  <script type="text/javascript">
+function kotae1()
+{
+if(f.q1.value == "サザエさん") {f.q1.value="○";
+
+changeImage();
+}
+else{
+f.q1.value="×";
+changeImage2();}
+
+}
+
+function kotae2()
+{
+if(f2.q2.value == "ピカチュウ") {
+  f2.q2.value="○";
+changeImage3();
+}
+else{
+f2.q2.value="×";
+changeImage4();}
+
+}
+function changeImage() {
+      let img = document.getElementById("image_place");
+      img.src = '{% static "maru.jpeg" %}';
+    }
+function changeImage2() {
+      let img = document.getElementById("image_place");
+      img.src = '{% static "batu.jpg" %}';
+    }
+function changeImage3() {
+      let img = document.getElementById("image_place2");
+      img.src = '{% static "maru.jpeg" %}';
+    }
+function changeImage4() {
+      let img = document.getElementById("image_place2");
+      img.src = '{% static "batu.jpg" %}';
+    }
+
+    function changedisp()
+    {
+      var divmain = document.querySelector("#main");
+      var divexp = document.querySelector("#exp");
+
+      divexp.style.display = "none";
+      divmain.style.display = "block";
+    }
+
+
+
+</script>
+<meta name="viewport" content="width=320,
+        height=480,
+        initial-scale=1.0,
+        minimum-scale=1.0,
+        maximum-scale=2.0,
+        user-scalable=yes" />
+
+<meta charset="UTF-8">
+<title>拡大縮小</title>
+
+</head>
+
+
+<link rel="stylesheet" href="{% static 'css/all.css' %}">
+
+<body>
+<div id="exp">
+  <h1 class="title">拡大・縮小</h1>
+  <div class="border" style="background-color: #fffaf1;">
+  <p id>二本の指をスマホの画面にあて、ひらくと拡大、閉じると縮小</p>
+  <img src="{% static 'pinch.png' %}">
+  <br>
+  <button onclick="changedisp()">練習へ進む</button>
+  <br>
+  <a  href="{% url 'text:ret' %}">トップに戻る</a>
+  </div>
+</div>
+
+
+<div id="main">
+
+<h1 class="title">拡大して何のキャラか当ててみよう</h1>
+
+<div class="border" style="background-color: #fffaf1;">
+<img src="{% static 'sazae.jpg' %}"  alt="サンプル" width="30" height="100">
+<br>
+<img id="image_place" src={% static 'hatena.jpg' %} alt="サンプル" width="300" height="200">
+  <form name="f">
+    <input name="q1">
+    <input type="button"value="答え合わせ" onclick="kotae1()" >
+    </form>
+<hr>
+<h1 class="title">縮小して何のキャラか当ててみよう</h1>
+<img src="{% static 'pikachu.jpg' %}"  alt="サンプル" width="2000" height="2000">
+<br>
+<img id="image_place2" src={% static 'hatena.jpg' %} alt="サンプル" width="300" height="200">
+  <form name="f2">
+    <input name="q2">
+    <input type="button"value="答え合わせ" onclick="kotae2()" >
+    </form>
+    <a  href="{% url 'text:ret' %}">トップに戻る</a>
+</div>
+</div>
+
+</body>
